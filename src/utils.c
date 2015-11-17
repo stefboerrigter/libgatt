@@ -27,11 +27,19 @@
 
 #include <stdlib.h>
 
-#include "utils.h"
+#include <glib.h>
+
+#include "bluetooth.h"
+#include "hci.h"
+#include "hci_lib.h"
+#include "sdp.h"
 #include "uuid.h"
+
+#include "btio.h"
 #include "att.h"
 #include "gattrib.h"
 #include "gatt.h"
+#include "gatttool.h"
 
 GIOChannel *gatt_connect(const char *src, const char *dst,
 				const char *dst_type, const char *sec_level,

@@ -25,7 +25,9 @@ void info(const char *format, ...) __attribute__((format(printf, 1, 2)));
 void warn(const char *format, ...) __attribute__((format(printf, 1, 2)));
 void error(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
-void btd_debug(const char *format, ...) __attribute__((format(printf, 1, 2)));
+#define btd_debug(f, ...)
+
+//void btd_debug(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
 void __btd_log_init(const char *debug, int detach);
 void __btd_log_cleanup(void);
@@ -55,5 +57,5 @@ void __btd_enable_debug(struct btd_debug_desc *start,
 		.file = __FILE__, .flags = BTD_DEBUG_FLAG_DEFAULT, \
 	}; \
 	if (__btd_debug_desc.flags & BTD_DEBUG_FLAG_PRINT) \
-		btd_debug("%s:%s() " fmt,  __FILE__, __FUNCTION__ , ## arg); \
+		btd_debug("%s:%s() " fmt,  __FILE__, __func__ , ## arg); \
 } while (0)
